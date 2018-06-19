@@ -10,5 +10,5 @@ const store =(function () {
   return {
     videos: videos, setVideos,
   };
-});
+}());
 
