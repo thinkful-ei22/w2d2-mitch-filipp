@@ -17,6 +17,6 @@ const Api = (function() {
 
 
   return {
-    fetchVideos
+    fetchVideos,
   };
 }());

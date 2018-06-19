@@ -14,6 +14,7 @@ const videoList = (function() {
         encrypted-media" data-featherlight-iframe-allowfullscreen="true">
       <img src="${video.thumbnail}">
       </a>
+      <a href="https://www.youtube.com/channel/${video.channelId}" target="_blank">${video.channelTitle}</a>
     </li>`;
   }
 
@@ -35,7 +36,9 @@ const videoList = (function() {
       ({
         id: item.id.videoId,
         title: item.snippet.title,
-        thumbnail: item.snippet.thumbnails.default.url
+        thumbnail: item.snippet.thumbnails.default.url,
+        channelId: item.snippet.channelId,
+        channelTitle: item.snippet.channelTitle,
       }));
   }
 
