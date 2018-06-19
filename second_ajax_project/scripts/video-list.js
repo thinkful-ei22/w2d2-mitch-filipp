@@ -8,7 +8,10 @@ const videoList = (function() {
     return `
     <li data-id="${video.id}">
       <h3>${video.title}</h3>
-      <a href="https://www.youtube.com/watch?v=${video.id}">
+      <a href="https://www.youtube.com/embed/${video.id}?rel=0" data-featherlight="iframe" 
+        data-featherlight-iframe-width="640" data-featherlight-iframe-height="480" 
+        data-featherlight-iframe-frameborder="0" data-featherlight-iframe-allow="autoplay; 
+        encrypted-media" data-featherlight-iframe-allowfullscreen="true">
       <img src="${video.thumbnail}">
       </a>
     </li>`;
