@@ -32,6 +32,14 @@ const videoList = (function() {
   }
     
   function decorateResponse(response) {
+    console.log(`Response prev: ${response.prevPageToken}, next: ${response.nextPageToken}`);
+    if (response.prevPageToken) {
+      store.updatePreviousPageToken(response.prevPageToken);
+    }
+    store.updateNextPageToken(response.nextPageToken);
+    
+
+
     return response.items.map(item =>
       ({
         id: item.id.videoId,
@@ -46,6 +54,7 @@ const videoList = (function() {
     $('form').on('submit', event => {
       event.preventDefault();
       const input = $('#search-term').val();
+      store.updateSearchTerm(input);
       $('#search-term').val('');
        
   
@@ -58,9 +67,35 @@ const videoList = (function() {
       Api.fetchVideos(input, callback);
     });
   }
+
+  function handleNextButton() {
+    $('#js-next-page').on('click', event => {
+      function callback(response){
+        const videos = decorateResponse(response);
+        store.setVideos(videos);
+        render();
+      }
+
+      Api.fetchNextVideos(store.searchTerm, callback);
+    });
+  }
+
+  function handlePrevButton() {
+    $('#js-prev-page').on('click', event => {
+      function callback(response){
+        const videos = decorateResponse(response);
+        store.setVideos(videos);
+        render();
+      }
+
+      Api.fetchPrevVideos(store.searchTerm, callback);
+    });
+  }
   
   function bindEventListeners() {
     handleFormSubmit();
+    handleNextButton();
+    handlePrevButton();
   }
   return {
     render: render,
