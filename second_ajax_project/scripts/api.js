@@ -1,6 +1,8 @@
 'use strict';
-/* global store, store, Api, videoList,  $*/
+/* global, store  $*/
+
 const API_KEY = 'AIzaSyAWRQkgTKvb4jbDgSrWDZv5ZpaUSW--IFA';
+
 const Api = (function() {
 
   const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
