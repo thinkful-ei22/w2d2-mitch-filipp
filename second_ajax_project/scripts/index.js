@@ -1,8 +1,6 @@
 'use strict';
 /* global store, store, Api, videoList, $*/
 
-const API_KEY = 'AIzaSyAWRQkgTKvb4jbDgSrWDZv5ZpaUSW--IFA';
-
 /*
   We want our store to hold a `videos` array of "decorated" objects - i.e. objects that
   have been transformed into just the necessary data to display on our page, compared to the large
